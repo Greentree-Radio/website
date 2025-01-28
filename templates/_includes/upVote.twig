@@ -1,0 +1,12 @@
+{% css %}
+
+{% endcss %}
+
+{% do craft.upvote.setIcons({
+    up   : '<i class="fa fa-thumbs-up"></i>',
+    down : '<i class="fa fa-thumbs-down"></i>',
+}) %}
+<div class="btn-group">    
+    <a class="btn btn-sm btn-success"><span class="text-white">Live</span> {{ craft.upvote.upvote(entry.id) }}</a>
+    <a class="btn btn-sm btn-danger"><span class="text-white">Dislike</span> {{ craft.upvote.downvote(entry.id) }}</a>
+</div>

@@ -1,0 +1,62 @@
+{#{% extends "_site/_layout.twig" %}#}
+{% extends '_site/NewLayout' %}
+
+{% set breadcrumbs = [entry] %}
+
+{% block content %}
+{% include "_site/_snippet/_content/_defaultHeader" %}
+
+<div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+            {% set currentEventId = craft.app.request.segment(3) %}
+                {% for event in craft.calendar.events({id: 'not ' ~ currentEventId,rangeStart: 'today',rangeEnd: '1 month', limit: 6}) %}
+                        <!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4 col-md-3">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg shadow-lg card">
+                {% set image = event.image.one() %}
+                {% if image %}
+                    <img alt="Placeholder" class="block h-auto w-full" src="{{ image.getUrl('') }}">
+                {% endif %}
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                            {{ event.title }}
+                    </h1>
+                    <p class="text-grey-darker text-sm">
+                        {{ event.startDate.format("F d Y") }}
+                    </p>
+                    <p class="text-grey-darker text-sm">
+                        {{ event.startDate.format("h:i A") }} - {{ event.endDate.format("h:i A") }}
+                    </p>
+                </header>
+
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    
+                        <p class="ml-2 text-sm">
+                            {{ event.author }}
+                        </p>
+                    
+                    <!--a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="hidden">Like</span>
+                        <i class="fa fa-lg fa-thumbs-up" style="color: green;"></i>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="hidden">Dislike</span>
+                        <i class="fa fa-lg fa-thumbs-down" style="color: maroon;"></i>
+                    </a-->
+                    {% include '_includes/upVote.twig' %}
+                </footer>
+
+            </article>
+            <!-- END Article -->
+        </a>
+        </div>
+        <!-- END Column -->
+                {% endfor %}
+    </div>
+
+    
+</div>
+
+{% endblock %}

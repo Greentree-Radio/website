@@ -1,0 +1,16 @@
+currLabel: 'Plugin Store'
+customIcon: null
+enabled: true
+handle: plugin-store
+icon: plug
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: 'Plugin Store'
+prevLevel: 1
+prevParent: null
+prevUrl: plugin-store
+sortOrder: 31
+type: craft
+url: plugin-store

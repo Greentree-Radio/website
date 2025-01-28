@@ -1,0 +1,6 @@
+adminOnly: 1
+allowSources: '*'
+enabledSiteGroups: '*'
+handle: mainNav
+levels: '3'
+title: 'Main Nav'

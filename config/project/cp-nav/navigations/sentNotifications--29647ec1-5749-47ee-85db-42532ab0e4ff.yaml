@@ -1,0 +1,16 @@
+currLabel: 'Sent Notifications'
+customIcon: null
+enabled: true
+handle: sentNotifications
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: 0a8bc0b7-9d7c-4ab2-8b24-b9e4fbd632a9
+prevLabel: 'Sent Notifications'
+prevLevel: 2
+prevParent: 0a8bc0b7-9d7c-4ab2-8b24-b9e4fbd632a9
+prevUrl: formie/sent-notifications
+sortOrder: 9
+type: plugin
+url: formie/sent-notifications

@@ -1,0 +1,11 @@
+{% header "Content-Type: application/json; charset=utf-8" %}
+{% header "Access-Control-Allow-Origin: *" %}
+
+{% set currentEventId = craft.app.request.segment(3) %}
+{% for event in craft.calendar.events({id: 'not ' ~ currentEventId,rangeStart: 'today',rangeEnd: '1 month',limit: 1}) %}
+{
+    "next_timestamp": "{{ event.startDate.format("U") }}",
+    "next_title": "{{ event.title }}",
+    "next_description": "{{ event.description }}"
+}
+{% endfor %}

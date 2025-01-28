@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - c5302424-61ab-45cb-a6e2-3185645ccc8a # Verse of The Day
+handle: verseOfTheDay
+maxAuthors: 1
+name: 'Verse of The Day'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

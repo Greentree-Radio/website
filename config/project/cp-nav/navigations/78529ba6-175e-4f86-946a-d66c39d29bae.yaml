@@ -1,0 +1,16 @@
+currLabel: 'Password Policy'
+customIcon: null
+enabled: true
+handle: password-policy
+icon: /var/www/html/vendor/craftpulse/craft-password-policy/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: 'Password Policy'
+prevLevel: 1
+prevParent: null
+prevUrl: password-policy
+sortOrder: 59
+type: plugin
+url: password-policy

@@ -1,0 +1,30 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 9f39fdda-793c-4506-9dd4-e764d46cad28 # Contentbuilder Page
+handle: pages
+maxAuthors: 1
+name: Pages
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - refresh
+        - '1'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: _site/_contentPage
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: null
+  uid: 8839fbe4-d531-4ccd-9d5d-2ec8517196f6
+type: structure

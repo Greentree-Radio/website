@@ -1,0 +1,53 @@
+{#{% extends "_site/_layout.twig" %}#}
+{% extends '_site/NewLayout' %}
+{% block content %}
+{% include '_site/_snippet/_content/_hero' %}
+
+{% include '_site/_snippet/_content/_contentBuilder'
+        with {
+        settings : {
+            section: 'section',
+            container: 'container'
+        }
+    } %}
+
+<div class="section section--default">
+    <div class="container">
+        <div class="w-full md:w-3/4">
+            <div class="container">
+                <div class="row">
+                <div class="w-full max-w-xs">
+                    <h2>Request a song</h2>
+                    <form class="cc_request_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" data-username="jaygreentree">
+                        <div data-type="result"></div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="artist">
+                        Song artist: 
+                        </label>
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="request[artist]" size="40" maxlength="127" /><br />
+
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                        Song title: 
+                        </label>
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="request[title]" size="40" maxlength="127" /><br />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="dedicated-to">
+                        Dedicated to: 
+                        </label>
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="request[dedication]" size="40" maxlength="127" /><br />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                        Your name: 
+                        </label>
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="request[sender]" size="40" maxlength="127" /><br />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                        Your E-mail:
+                        </label>
+                        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="request[email]" size="40" maxlength="127" /><br />
+                        <input type="button" class="btn btn--primary rounded" value="Submit song request" data-type="submit" /><br />
+                    </form>
+                    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/request.js"></script>
+                    <!-- Recently played -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

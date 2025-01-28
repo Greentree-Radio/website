@@ -1,0 +1,16 @@
+currLabel: Redirects
+customIcon: null
+enabled: true
+handle: redirects
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: feb9ffb8-e19f-46f8-a792-e7c8d27d6f16
+prevLabel: Redirects
+prevLevel: 2
+prevParent: feb9ffb8-e19f-46f8-a792-e7c8d27d6f16
+prevUrl: seo-fields/redirects
+sortOrder: 19
+type: plugin
+url: seo-fields/redirects

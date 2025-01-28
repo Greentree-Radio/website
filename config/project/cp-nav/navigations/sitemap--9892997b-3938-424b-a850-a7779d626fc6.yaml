@@ -1,0 +1,16 @@
+currLabel: Sitemap.xml
+customIcon: null
+enabled: true
+handle: sitemap
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: feb9ffb8-e19f-46f8-a792-e7c8d27d6f16
+prevLabel: Sitemap.xml
+prevLevel: 2
+prevParent: feb9ffb8-e19f-46f8-a792-e7c8d27d6f16
+prevUrl: seo-fields/sitemap
+sortOrder: 22
+type: plugin
+url: seo-fields/sitemap

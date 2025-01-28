@@ -1,0 +1,46 @@
+allowRepeatingEvents: true
+color: '#013852'
+description: 'The default calendar'
+descriptionFieldHandle: ''
+fieldLayout:
+  tabs:
+    -
+      elementCondition: null
+      elements:
+        -
+          dateAdded: '2024-12-08T00:41:23+00:00'
+          elementCondition: null
+          fieldUid: a44287f8-d6ed-4f2c-8a63-0c1312ef236e # Image
+          handle: null
+          includeInCards: false
+          instructions: null
+          label: null
+          providesThumbs: false
+          required: false
+          tip: null
+          type: craft\fieldlayoutelements\CustomField
+          uid: a398f570-4fbf-404e-a6ec-aaeba8f7c38f
+          userCondition: null
+          warning: null
+          width: 100
+      name: 'Event Details'
+      uid: 7924ab17-87ef-45b8-9726-061af06caec0
+      userCondition: null
+  uid: 34ffcfda-ec5a-468b-bab9-11fd32d4ebb1
+handle: default
+hasTitleField: true
+icsHash: null
+icsTimezone: floating
+locationFieldHandle: ''
+name: Default
+siteSettings:
+  b7da6891-5ebf-41a4-9e83-b4ed18da8133:
+    enabledByDefault: true
+    hasUrls: false
+    siteId: e57cf13b-f9cb-484a-8093-a897fa43eb68 # $SYSTEM_NAME
+    template: null
+    uriFormat: null
+titleFormat: ''
+titleLabel: Title
+titleTranslationKeyFormat: ''
+titleTranslationMethod: none

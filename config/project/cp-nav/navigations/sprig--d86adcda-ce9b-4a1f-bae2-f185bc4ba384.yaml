@@ -1,0 +1,16 @@
+currLabel: Sprig
+customIcon: null
+enabled: true
+handle: sprig
+icon: /var/www/html/vendor/putyourlightson/craft-sprig/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: Sprig
+prevLevel: 1
+prevParent: null
+prevUrl: sprig
+sortOrder: 23
+type: plugin
+url: sprig

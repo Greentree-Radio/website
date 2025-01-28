@@ -1,0 +1,219 @@
+color: null
+fieldLayouts:
+  6b7fadb8-b880-45cc-b5af-2f8dbd770ab0:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: d217be10-f0a3-4498-829a-aaa50aee8b63
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-11-21T01:09:46+00:00'
+            elementCondition: null
+            fieldUid: 2ef0df1a-8133-4216-849b-430b5a1db7c6 # Breadcrumbs
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 83b55042-6b37-4315-8792-37f7750b70b4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 8ff8437a-a38f-47f0-b489-1701614eec3f # Header image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: eb6bb39b-8049-415b-be6f-3df2900fd0ab
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: b5de6dcf-80e6-48e2-b846-0dab7f35c4c8 # Intro Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 223acace-cdae-4ed7-9394-f825da789ada
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: aafb627f-dbb2-48d4-81af-b368076efc56
+            userCondition: null
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 56d715d0-6a9d-4562-9c66-e5b4caad7f44 # Content Builder
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: af77011a-d451-4c28-b747-0c06fd6aa566
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 0861d6c4-ecca-44c7-98b7-90d3e07a3a29
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 4a2bad07-8d89-4689-b0bf-774eed764660 # Overview title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fcb7f29c-2df1-401b-88a6-2cee29686db1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38 # Overview description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2c01c3f9-00b5-46ae-9ca5-3069167abeff
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 15ed2b72-8955-4cec-93f8-9736a9e50e80 # Overview image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b67a65a8-5261-46a5-8f60-6dbedf6640b5
+            userCondition: null
+            warning: null
+            width: 100
+        name: Overview
+        uid: ff651b09-8915-4ded-bb8c-307ca5666c25
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 685530fc-e1f1-4be1-813b-ebf9ac3aa108 # SEO
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e8710a1c-d8e4-4556-987e-14da4429c8ee
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: b25b9b63-a1b0-4ad9-9d11-29857442047c
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-11-18T10:07:04+00:00'
+            elementCondition: null
+            fieldUid: 82edb6db-a497-4e37-8c25-5d4d210f0c81 # Search keywords
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 76a43d5c-05b8-4cd7-bea0-d4c41d4a8ba3
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Site search'
+        uid: 9d6f4427-7d4d-4407-af58-4d04e5e60c30
+        userCondition: null
+handle: pages
+hasTitleField: true
+icon: table-layout
+name: 'Contentbuilder Page'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

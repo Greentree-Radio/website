@@ -1,0 +1,43 @@
+{#{% extends "_site/_layout.twig" %}#}
+{% extends '_site/NewLayout' %}
+
+{% import _self as errors %}
+
+{% set breadcrumbs = [entry] %}
+
+{% block content %}
+
+    {% include "_site/_snippet/_content/_defaultHeader" %}
+
+    <div class="section section--default">
+        <div class="container justify-content-center">
+            <form method="post" class="form bg-gray-300 rounded px-8 pt-6 pb-8 mb-4 max-w-md" accept-charset="UTF-8">
+                {{ csrfInput() }}
+                {{ actionInput('users/login') }}
+                {% set profilePage = craft.entries.section('profile').one() %}
+                {{ redirectInput(profilePage.getUrl()) }}
+                <input type="hidden" name="action" value="users/login">
+                {% if errorMessage is defined %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{{ errorMessage }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label class="form__label" for="loginName">{{ 'Email Address'|t }}</label>
+                    <input class="form-control" id="loginName" type="text" name="loginName"
+                            value="{{ craft.app.user.rememberedUsername }}" placeholder="{{ 'Email Address'|t }}"
+                            required>
+                </div>
+                <div class="form-group">
+                    <label class="form__label" for="password">{{ 'Password'|t }}</label>
+                    <input class="form-control" id="password" type="password" name="password"
+                            placeholder="{{ 'Password'|t }}" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">{{ 'Login'|t }}</button>
+                    {% set forgotPassword = craft.entries.section('forgotPassword').one() %}
+                    <a href="{{ forgotPassword.getUrl() }}" class="inline-block align-baseline font-bold text-sm hover:underline ml-2">{{ 'Forgot Password?'|t }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

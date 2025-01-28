@@ -1,0 +1,46 @@
+{% set entry = craft.entries.section('pageNotFound').one() %}
+
+{% switch currentSite.group.name %}
+    {% case "site2" %}
+        {% set layout = "_site2/_layout" %}
+    {% default %}
+        {% set layout = "_site/_layout" %}
+{% endswitch %}
+
+{% extends layout %}
+
+{% set breadcrumbs = [entry] %}
+
+{% block content %}
+
+    {% switch currentSite.group.name %}
+        {% case "site2" %}
+            {# Content for site 2 here #}
+        {% default %}
+            {% include "_site/_snippet/_content/_defaultHeader" %}
+
+            {% include '_site/_snippet/_content/_contentBuilder'
+                with {
+                settings : {
+                    section: 'section',
+                    container: 'container'
+                }
+            }
+            %}
+    {% endswitch %}
+
+{% endblock %}
+
+{% block inline_scripts %}
+    <script type="text/javascript">
+        window.app = window.app || {};
+        app.variables = {
+            assetsPath: "/"
+        };
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({'event': '404_page_not_found'});
+    </script>
+{% endblock %}

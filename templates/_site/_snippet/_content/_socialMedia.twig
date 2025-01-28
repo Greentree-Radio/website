@@ -1,0 +1,40 @@
+{% if generalInfo.facebook %}
+    <li class="">
+        <a href="{{ generalInfo.facebook }}" aria-label="{{ 'Facebook'|t }}" target="_blank" rel="noopener" class="inline-block text-primary hover:text-secondary nav__link--facebook">
+            {{ icon('facebook') }} 
+            <span class="sr-only">{{ 'Facebook'|t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if generalInfo.instagram %}
+    <li class="">
+        <a href="{{ generalInfo.instagram }}" aria-label="{{ 'Instagram'|t }}" target="_blank" rel="noopener" class="inline-block text-primary hover:text-secondary nav__link--instagram">
+            {{ icon('instagram') }} 
+            <span class="sr-only">{{ 'Instagram'|t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if generalInfo.linkedin %}
+    <li class="">
+        <a href="{{ generalInfo.linkedin }}" aria-label="{{ 'LinkedIn'|t }}" target="_blank" rel="noopener" class="inline-block text-primary hover:text-secondary nav__link--linkedin">
+            {{ icon('linkedin') }} 
+            <span class="sr-only">{{ 'LinkedIn'|t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if generalInfo.twitter %}
+    <li class="">
+        <a href="{{ generalInfo.twitter }}" aria-label="{{ 'Twitter'|t }}" target="_blank" rel="noopener" class="inline-block text-primary hover:text-secondary nav__link--twitter">
+            {{ icon('x-twitter') }} 
+            <span class="sr-only">{{ 'X (Twitter)'|t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if generalInfo.youtube %}
+    <li class="">
+        <a href="{{ generalInfo.youtube }}" aria-label="{{ 'YouTube'|t }}" target="_blank" rel="noopener" class="inline-block text-primary hover:text-secondary nav__link--youtube">
+            {{ icon('youtube') }} 
+            <span class="sr-only">{{ 'YouTube'|t }}</span>
+        </a>
+    </li>
+{% endif %}

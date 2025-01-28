@@ -1,0 +1,95 @@
+{
+  "name": "statikbe/craft",
+  "description": "Craft CMS starter package, by Statik.be",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "project"
+  ],
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "ext-json": "*",
+    "craftcms/ckeditor": "4.5.0",
+    "craftcms/cms": "5.6.1",
+    "craftcms/postmark": "^3.1.0",
+    "craftpulse/craft-password-policy": "5.0.3",
+    "doublesecretagency/craft-cpcss": "3.0.0",
+    "doublesecretagency/craft-upvote": "^3.1.0",
+    "hybridinteractive/craft-position-fieldtype": "^5.0.0",
+    "hybridinteractive/craft-width-fieldtype": "^5.0.0",
+    "jaybizzle/crawler-detect": "^1.2",
+    "mikehaertl/php-shellcommand": "^1.6",
+    "miranj/craft-obfuscator": "^1.2.0",
+    "mmikkel/cp-clearcache": "^2.0.1",
+    "mmikkel/cp-field-inspect": "2.0.4",
+    "nystudio107/craft-imageoptimize": "5.0.4",
+    "nystudio107/craft-seomatic": "5.1.11",
+    "nystudio107/craft-templatecomments": "5.0.4",
+    "nystudio107/craft-vite": "5.0.1",
+    "olivestudio/craft-olivemenus": "^5.0",
+    "putyourlightson/craft-sprig": "3.5.2",
+    "solspace/craft-calendar": "5.0.13",
+    "statikbe/craft-carbon-tracker": "5.0.3",
+    "statikbe/craft-config-values": "^5.0.0",
+    "statikbe/craft-cookie-banner": "^5.0.0",
+    "statikbe/craft-sentry": "5.1.1",
+    "statikbe/craft-translate": "^5.0.0",
+    "statikbe/craft-video-parser": "^5.0.0",
+    "studioespresso/craft-dumper": "5.0.1",
+    "studioespresso/craft-navigate": "^5.0.0",
+    "studioespresso/craft-seo-fields": "5.0.4",
+    "vanderlee/syllable": "^1.7",
+    "verbb/cp-nav": "^5.0",
+    "verbb/element-index-defaults": "^4.0.0-beta.1",
+    "verbb/expanded-singles": "^3.0.0-beta.2",
+    "verbb/formie": "3.0.19",
+    "verbb/hyper": "2.2.2",
+    "verbb/image-resizer": "4.0.1",
+    "verbb/knock-knock": "3.0.1",
+    "verbb/tablemaker": "5.0.3",
+    "vlucas/phpdotenv": "^5.4.1",
+    "wbrowar/guide": "^5.1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "modules\\statik\\": "modules/statik/src/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true,
+      "php-http/discovery": true
+    }
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G",
+    "post-create-project-cmd": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "@php -r \"copy('.gitignore.example', '.gitignore');\"",
+      "ddev config",
+      "ddev start",
+      "ddev composer dump-autoload -o",
+      "ddev craft setup/welcome"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.craftcms.com",
+      "canonical": false
+    }
+  ]
+}

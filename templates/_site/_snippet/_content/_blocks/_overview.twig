@@ -1,0 +1,8 @@
+{% if block.blockTitle|length %}
+    <h2 id="{{ block.blockTitle|slugify }}">{{ block.blockTitle }}</h2>
+{% endif %}
+<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+    {% for cardEntry in block.entries.with(['overviewImage']).collect() %}
+        {% include '_site/_snippet/_item/_card' %}
+    {% endfor %}
+</div>

@@ -1,0 +1,16 @@
+currLabel: 'Site Settings'
+customIcon: null
+enabled: true
+handle: site
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevLabel: 'Site Settings'
+prevLevel: 2
+prevParent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevUrl: seomatic/site/identity
+sortOrder: 56
+type: plugin
+url: seomatic/site/identity

@@ -1,0 +1,220 @@
+<!-- Template: {{ _self }}.twig -->
+{#
+Outputs the global site footer.
+
+@var currentUser \craft\elements\User
+#}
+
+<div class="bg-gray-500 text-white">
+  <div class="container mx-auto p-6">
+    {% if not currentUser %}
+      <p class="text-1xl">
+        {{- 'You’re a guest user that’s not logged in.'|t -}}
+      </p>
+    {% endif %}
+
+    {% if currentUser %}
+      <p class="text-1xl">
+        {% if currentUser.groups %}
+          {% set userGroups %}
+            {% for group in currentUser.groups %}
+              <code class="rounded p-1 bg-gray-700 text-xs mr-2">
+                {{- group.name -}}
+              </code>
+            {% endfor %}
+          {% endset %}
+          {{ 'Logged in as <code class="{classes}">{user}</code>, in user groups: {groups}.'|t({
+            classes: 'rounded p-1 bg-gray-700 text-xs',
+            user: currentUser.username,
+            groups: userGroups
+          })|raw }}
+        {% else %}
+          {{ 'Logged in as <code class="{classes}">{user}</code>.'|t({
+            classes: 'rounded p-1 bg-gray-700 text-xs',
+            user: currentUser.username
+          })|raw }}
+        {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+<div class="bg-gray-900 text-gray-400 pt-8 pb-12">
+  <div class="container mx-auto p-6">
+    <div class="md:flex">
+      <div class="md:w-1/2 md:pr-6">
+        <h3 class="text-xl pb-3 text-gray-300">
+          {{ siteName}}
+        </h3>
+        {#<p class="pb-3">
+          {{ 'These Craft Commerce {version} example templates use <a href="{url}" class="underline">TailwindCSS</a> and native JavaScript. You’re
+      running the {edition} edition of Craft Commerce.'|t({
+            url: 'https://tailwindcss.com',
+            edition: craft.commerce.edition|upper,
+            version: craft.commerce.version,
+          })|raw }}#}
+        </p>
+      </div>
+      {#
+      <div class="md:w-1/2 md:pl-6">
+        <h5 class="text-gray-600 pb-2 uppercase text-sm tracking-wide pt-3">
+          {{- 'More Resources'|t -}}
+        </h5>
+        <ul class="list-disc list-inside pb-2">
+          <li>
+            <a href="https://craftcms.com/docs/4.x/" class="text-blue-500 hover:text-blue-600 underline">
+              {{- 'Craft'|t -}}
+            </a>
+            &
+            <a href="https://craftcms.com/docs/commerce/4.x/" class="text-blue-500 hover:text-blue-600 underline">
+              {{- 'Commerce'|t -}}
+            </a>
+            Documentation.
+          </li>
+          <li>
+            <a href="http://craftcms.stackexchange.com" class="text-blue-500 hover:text-blue-600 underline">
+              {{- 'Craft CMS Stack Exchange'|t -}}
+            </a>.
+            <span class="text-xs">Use the <code class="rounded p-1 bg-gray-700 text-xs">plugin-craftcommerce</code> tag.</span>
+          </li>
+          <li>
+            <a href="https://craftcms.com/discord" class="text-blue-500 hover:text-blue-600 underline">
+              {{- 'Craft Discord Community'|t -}}
+            </a>.
+            <span class="text-xs">Use the <code class="rounded p-1 bg-gray-700 text-xs">#commerce</code> channel.</span>
+          </li>
+        </ul>
+      </div>
+      #}
+    </div>
+  </div>
+</div>
+
+        <!-- FOOTER -->
+    <div class="full-width bg-kllight">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 col-md-3">
+                    <p class="my-4">
+                        {{ siteName }}
+                        <!--<img class="" src="img/logo-klove-cyan.png" height="25" alt="">-->
+                    </p>
+                </div>
+                <div class="col-12 col-md-9">
+                    <ul class="list-inline my-4 float-right">
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-facebook-f mr-2 color-facebook"></i>Facebook</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-twitter mr-2 text-cyan"></i>Twitter</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-instagram mr-2 text-magenta"></i>Instagram</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-youtube mr-2 color-youtube"></i>YouTube</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-pinterest mr-2 color-pinterest"></i>Pinterest</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr class="m-0">
+                </div>
+            </div>
+            <div class="row justify-content-center py-4 hidden">
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2 ">POPULAR LINKS</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Stream K-LOVE Online</a></li>
+                            <li><a href="#" class="text-dark">DJs and Shows</a></li>
+                            <li><a href="#" class="text-dark">Verse of the Day</a></li>
+                            <li><a href="#" class="text-dark">Prayer</a></li>
+                            <li><a href="#" class="text-dark">Events</a></li>
+                            <li><a href="#" class="text-dark">Contests</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">HELP</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">FAQs</a></li>
+                            <li><a href="#" class="text-dark">My Account</a></li>
+                            <li><a href="#" class="text-dark">Contact Us</a></li>
+                            <li><a href="#" class="text-dark">Privacy Policy</a></li>
+                            <li><a href="#" class="text-dark">Terms of Use</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">MINISTRY</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Submit a Prayer</a></li>
+                            <li><a href="#" class="text-dark">Verse of the Day</a></li>
+                            <li><a href="#" class="text-dark">Seek Advice</a></li>
+                            <li><a href="#" class="text-dark">Pastors</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">ABOUT US</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Mission</a></li>
+                            <li><a href="#" class="text-dark">Jobs</a></li>
+                            <li><a href="#" class="text-dark">Finances</a></li>
+                            <li><a href="#" class="text-dark">Leadership and Key Staff</a></li>
+                            <li><a href="#" class="text-dark">Audited Financials</a></li>
+                            <li><a href="#" class="text-dark">Form 990</a></li>
+                        </small>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr class="m-0">
+                </div>
+                <div class="col my-4">
+                    <small>
+                        <p class="text-center text-muted mb-0">© {{ now | date('Y') }} {{ siteName }}, All rights reserved.</p>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script>
+    $(".btn-primary").click(function(e) {
+        e.preventDefault();
+        $(".hero")
+            .fadeOut(500, function() {
+                $(this).css('background', "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.5)), url('img/for-king-and-country.jpg') top center");
+
+                $(".hero .harvest-logo").css("opacity", 0);
+                $(".hero h3").text('for King & Country');
+                $(".hero h4").text('Meet and Greet + Q & A For First 500');
+                $(".btn-primary").text('Get Tickets Now');
+            })
+            .fadeIn(500);
+    });
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/streaminfo.js"></script>
+    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/recenttracks.js"></script>

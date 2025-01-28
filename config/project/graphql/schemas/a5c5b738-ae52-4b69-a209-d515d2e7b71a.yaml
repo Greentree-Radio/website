@@ -1,0 +1,125 @@
+isPublic: true
+name: 'Public Schema'
+scope:
+  - 'sites.e57cf13b-f9cb-484a-8093-a897fa43eb68:read' # $SYSTEM_NAME
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
+  - 'elements.inactive:read'
+  - 'sections.fa6e0764-a31c-4304-a4d7-76bd3a679e3e:read' # 503
+  - 'sections.99a435d2-9c12-4ef6-8b3b-2a9915d4216b:read' # Accessibility Statement
+  - 'sections.dca2ac05-7833-41de-b7b4-a737c090575c:read' # Confirm your account
+  - 'sections.5d236e94-b6a8-472c-9296-a5c992cdd49a:read' # Contact
+  - 'sections.36895330-a28e-477f-9327-bdbe66dabf99:read' # Cookie policy
+  - 'sections.af69e9a2-96df-4fa9-8cc3-2728ec4fc632:read' # Edit password
+  - 'sections.05aba0e3-e1de-4bf3-8a07-5c9f3ef9475c:read' # Edit profile
+  - 'sections.1c4e3f0f-ca9b-474d-a460-48f45133c763:read' # Forgot password
+  - 'sections.53c1af4c-0fbd-4811-a028-67fed65195b9:read' # Forgot Password Confirmation
+  - 'sections.5611e98d-93ec-4bd4-95dd-18f282b8c5e8:read' # Home
+  - 'sections.c25b1e19-dca6-4ab5-a776-a043f6ee4c82:read' # Login
+  - 'sections.4c32edae-2824-4f0f-b38b-2477d2500dfe:read' # News
+  - 'sections.4750849d-9328-4d3e-956d-9d317da5e6eb:read' # Page not found
+  - 'sections.c2198cbb-f6e1-478a-ab4a-bbbaea43ce0e:read' # Privacy policy
+  - 'sections.361daec5-5ea3-4d9f-957f-f39c78bb595e:read' # Profile
+  - 'sections.684ece64-c23a-4abf-9574-f2c053d496e8:read' # Register
+  - 'sections.d5601a1f-a33e-4c5a-b7af-1f29347149ca:read' # Registration completed
+  - 'sections.e3bed4e1-82ae-45e8-908c-0a6669141b31:read' # Search results
+  - 'sections.8e583282-1fec-4444-822f-37b2d5961f28:read' # Set Password
+  - 'sections.4703bf34-5e13-4da1-aff6-d04c0bba024b:read' # Set Password Confirmation
+  - 'sections.6f79e12f-9d80-4f17-ae51-5160127975ec:read' # Site Settings
+  - 'sections.01faae48-e031-4496-af0c-89de7f12eccd:read' # News categories
+  - 'sections.c576870d-abd8-46aa-8fe5-cdd12c40dfa8:read' # News Entries
+  - 'sections.45b7c78f-587d-441b-bbd1-605ca629d0bd:read' # Pages
+  - 'nestedentryfields.1ea43556-c1c6-4ae7-9c49-48498a82f797:read' # CK Editor - Extended
+  - 'nestedentryfields.66954acb-77ba-4c75-9659-f3976770df07:read' # CK Editor - Simple
+  - 'nestedentryfields.5d7250f9-a00c-4732-a743-b46bb5d11646:read' # CK Editor - Standard
+  - 'nestedentryfields.b4e0e49a-bcd4-4d67-80ad-09ea0d807bd8:read' # CK Editor - Table
+  - 'nestedentryfields.b5de6dcf-80e6-48e2-b846-0dab7f35c4c8:read' # Intro Text
+  - 'nestedentryfields.2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38:read' # Overview description
+  - 'nestedentryfields.56d715d0-6a9d-4562-9c66-e5b4caad7f44:read' # Content Builder
+  - 'nestedentryfields.37471b2c-6c44-4b1a-bc50-3788e9de05d5:read' # Hero
+  - 'volumes.979c3eeb-f99a-4ca1-bcbe-ce9298a4e4ca:read' # Public Files
+  - 'usergroups.everyone:read'
+  - 'usergroups.3196b984-5af4-44dd-a6db-ac2c8f7924d9:read' # Content Managers
+  - 'Calendars.all:read'
+  - 'Calendars.3d312ef2-1337-4e2c-8e4a-1e1c72dfcf8e:read'
+  - 'formieForms.all:read'
+  - 'formieForms.27d5efa3-c7a7-4924-8eda-df990f02ab24:read'
+  - 'formieSubmissions.all:read'
+  - 'formieSubmissions.27d5efa3-c7a7-4924-8eda-df990f02ab24:read'
+  - 'sections.fa6e0764-a31c-4304-a4d7-76bd3a679e3e:save' # 503
+  - 'sections.99a435d2-9c12-4ef6-8b3b-2a9915d4216b:save' # Accessibility Statement
+  - 'sections.dca2ac05-7833-41de-b7b4-a737c090575c:save' # Confirm your account
+  - 'sections.5d236e94-b6a8-472c-9296-a5c992cdd49a:save' # Contact
+  - 'sections.36895330-a28e-477f-9327-bdbe66dabf99:save' # Cookie policy
+  - 'sections.af69e9a2-96df-4fa9-8cc3-2728ec4fc632:save' # Edit password
+  - 'sections.05aba0e3-e1de-4bf3-8a07-5c9f3ef9475c:save' # Edit profile
+  - 'sections.1c4e3f0f-ca9b-474d-a460-48f45133c763:save' # Forgot password
+  - 'sections.53c1af4c-0fbd-4811-a028-67fed65195b9:save' # Forgot Password Confirmation
+  - 'sections.5611e98d-93ec-4bd4-95dd-18f282b8c5e8:save' # Home
+  - 'sections.c25b1e19-dca6-4ab5-a776-a043f6ee4c82:save' # Login
+  - 'sections.4c32edae-2824-4f0f-b38b-2477d2500dfe:save' # News
+  - 'sections.4750849d-9328-4d3e-956d-9d317da5e6eb:save' # Page not found
+  - 'sections.c2198cbb-f6e1-478a-ab4a-bbbaea43ce0e:save' # Privacy policy
+  - 'sections.361daec5-5ea3-4d9f-957f-f39c78bb595e:save' # Profile
+  - 'sections.684ece64-c23a-4abf-9574-f2c053d496e8:save' # Register
+  - 'sections.d5601a1f-a33e-4c5a-b7af-1f29347149ca:save' # Registration completed
+  - 'sections.e3bed4e1-82ae-45e8-908c-0a6669141b31:save' # Search results
+  - 'sections.8e583282-1fec-4444-822f-37b2d5961f28:save' # Set Password
+  - 'sections.4703bf34-5e13-4da1-aff6-d04c0bba024b:save' # Set Password Confirmation
+  - 'sections.6f79e12f-9d80-4f17-ae51-5160127975ec:save' # Site Settings
+  - 'sections.01faae48-e031-4496-af0c-89de7f12eccd:edit' # News categories
+  - 'sections.01faae48-e031-4496-af0c-89de7f12eccd:create' # News categories
+  - 'sections.01faae48-e031-4496-af0c-89de7f12eccd:save' # News categories
+  - 'sections.01faae48-e031-4496-af0c-89de7f12eccd:delete' # News categories
+  - 'sections.c576870d-abd8-46aa-8fe5-cdd12c40dfa8:edit' # News Entries
+  - 'sections.c576870d-abd8-46aa-8fe5-cdd12c40dfa8:create' # News Entries
+  - 'sections.c576870d-abd8-46aa-8fe5-cdd12c40dfa8:save' # News Entries
+  - 'sections.c576870d-abd8-46aa-8fe5-cdd12c40dfa8:delete' # News Entries
+  - 'sections.45b7c78f-587d-441b-bbd1-605ca629d0bd:edit' # Pages
+  - 'sections.45b7c78f-587d-441b-bbd1-605ca629d0bd:create' # Pages
+  - 'sections.45b7c78f-587d-441b-bbd1-605ca629d0bd:save' # Pages
+  - 'sections.45b7c78f-587d-441b-bbd1-605ca629d0bd:delete' # Pages
+  - 'nestedentryfields.1ea43556-c1c6-4ae7-9c49-48498a82f797:edit' # CK Editor - Extended
+  - 'nestedentryfields.1ea43556-c1c6-4ae7-9c49-48498a82f797:create' # CK Editor - Extended
+  - 'nestedentryfields.1ea43556-c1c6-4ae7-9c49-48498a82f797:save' # CK Editor - Extended
+  - 'nestedentryfields.1ea43556-c1c6-4ae7-9c49-48498a82f797:delete' # CK Editor - Extended
+  - 'nestedentryfields.66954acb-77ba-4c75-9659-f3976770df07:edit' # CK Editor - Simple
+  - 'nestedentryfields.66954acb-77ba-4c75-9659-f3976770df07:create' # CK Editor - Simple
+  - 'nestedentryfields.66954acb-77ba-4c75-9659-f3976770df07:save' # CK Editor - Simple
+  - 'nestedentryfields.66954acb-77ba-4c75-9659-f3976770df07:delete' # CK Editor - Simple
+  - 'nestedentryfields.5d7250f9-a00c-4732-a743-b46bb5d11646:edit' # CK Editor - Standard
+  - 'nestedentryfields.5d7250f9-a00c-4732-a743-b46bb5d11646:create' # CK Editor - Standard
+  - 'nestedentryfields.5d7250f9-a00c-4732-a743-b46bb5d11646:save' # CK Editor - Standard
+  - 'nestedentryfields.5d7250f9-a00c-4732-a743-b46bb5d11646:delete' # CK Editor - Standard
+  - 'nestedentryfields.b4e0e49a-bcd4-4d67-80ad-09ea0d807bd8:edit' # CK Editor - Table
+  - 'nestedentryfields.b4e0e49a-bcd4-4d67-80ad-09ea0d807bd8:create' # CK Editor - Table
+  - 'nestedentryfields.b4e0e49a-bcd4-4d67-80ad-09ea0d807bd8:save' # CK Editor - Table
+  - 'nestedentryfields.b4e0e49a-bcd4-4d67-80ad-09ea0d807bd8:delete' # CK Editor - Table
+  - 'nestedentryfields.b5de6dcf-80e6-48e2-b846-0dab7f35c4c8:edit' # Intro Text
+  - 'nestedentryfields.b5de6dcf-80e6-48e2-b846-0dab7f35c4c8:create' # Intro Text
+  - 'nestedentryfields.b5de6dcf-80e6-48e2-b846-0dab7f35c4c8:save' # Intro Text
+  - 'nestedentryfields.b5de6dcf-80e6-48e2-b846-0dab7f35c4c8:delete' # Intro Text
+  - 'nestedentryfields.2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38:edit' # Overview description
+  - 'nestedentryfields.2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38:create' # Overview description
+  - 'nestedentryfields.2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38:save' # Overview description
+  - 'nestedentryfields.2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38:delete' # Overview description
+  - 'nestedentryfields.56d715d0-6a9d-4562-9c66-e5b4caad7f44:edit' # Content Builder
+  - 'nestedentryfields.56d715d0-6a9d-4562-9c66-e5b4caad7f44:create' # Content Builder
+  - 'nestedentryfields.56d715d0-6a9d-4562-9c66-e5b4caad7f44:save' # Content Builder
+  - 'nestedentryfields.56d715d0-6a9d-4562-9c66-e5b4caad7f44:delete' # Content Builder
+  - 'nestedentryfields.37471b2c-6c44-4b1a-bc50-3788e9de05d5:edit' # Hero
+  - 'nestedentryfields.37471b2c-6c44-4b1a-bc50-3788e9de05d5:create' # Hero
+  - 'nestedentryfields.37471b2c-6c44-4b1a-bc50-3788e9de05d5:save' # Hero
+  - 'nestedentryfields.37471b2c-6c44-4b1a-bc50-3788e9de05d5:delete' # Hero
+  - 'volumes.979c3eeb-f99a-4ca1-bcbe-ce9298a4e4ca:edit' # Public Files
+  - 'volumes.979c3eeb-f99a-4ca1-bcbe-ce9298a4e4ca:create' # Public Files
+  - 'volumes.979c3eeb-f99a-4ca1-bcbe-ce9298a4e4ca:save' # Public Files
+  - 'volumes.979c3eeb-f99a-4ca1-bcbe-ce9298a4e4ca:delete' # Public Files
+  - 'formieSubmissions.all:edit'
+  - 'formieSubmissions.all:create'
+  - 'formieSubmissions.all:save'
+  - 'formieSubmissions.all:delete'
+  - 'formieSubmissions.27d5efa3-c7a7-4924-8eda-df990f02ab24:edit'
+  - 'formieSubmissions.27d5efa3-c7a7-4924-8eda-df990f02ab24:create'
+  - 'formieSubmissions.27d5efa3-c7a7-4924-8eda-df990f02ab24:save'
+  - 'formieSubmissions.27d5efa3-c7a7-4924-8eda-df990f02ab24:delete'

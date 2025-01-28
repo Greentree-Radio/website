@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 4cba9503-9b51-475c-b899-328b2bcd3448 # DJs
+handle: djs
+maxAuthors: 1
+name: DJs
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: _site/djs/_entry.twig
+    uriFormat: djs
+type: single

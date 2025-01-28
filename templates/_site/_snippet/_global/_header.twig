@@ -1,0 +1,124 @@
+<header class="page-header">
+	<div class="container">
+		<div class="flex items-center justify-between md:items-stretch">
+			<a href="{{ siteUrl }}" class="">
+				{#
+				{{ svg('@webroot/frontend/img/site/logo.svg')|attr({ class: 'w-full max-w-logo', role: 'img', 'aria-label': 'Statik' }) }}
+				#}<br>
+				<h3 class="text-3xl">{{ siteName }}</h3>
+				<span class="sr-only">{{ "Startpagina"|t }}</span>
+			</a>
+			{% if not systemOffline %}
+				<div class="flex-col items-end hidden md:flex">
+					<div class="relative flex flex-wrap items-center justify-end py-4 pl-10 min-w-searchbox">
+						<div class="flex items-center js-search-hide">
+							<div class="mr-6">
+								{% include '_site/_snippet/_nav/_service.twig' %}
+							</div>
+							<div class="hidden md:block">
+								{% include "_site/_snippet/_nav/_language" %}
+							</div>
+							<div class="ml-6">
+								<button type="button"
+								class="text-lg cursor-pointer text-primary js-search-trigger js-search-animated">
+								<span class="sr-only">{{ 'Zoeken'|t }}</span>
+								{{ icon('magnify') }}
+								</button>
+							</div>
+						</div>
+						{% include "_site/_snippet/_global/_search.twig" %}
+					</div>
+					{% include '_site/_snippet/_nav/_main.twig' %}
+				</div>
+				<button type="button" class="text-3xl js-flyout-toggle md:hidden ie-hidden print:hidden">
+				<span class="sr-only">{{ "Menu"|t }}</span>
+				{{ icon('menu') }}
+				</button>
+			{% endif %}
+		</div>
+	</div>
+</header>
+<hr>
+<section class="relative z-20 shadow-lg xl:block">
+	<nav class="bg-brand-lightgray">
+		<div class="mx-auto flex h-[74px] max-w-6xl px-8">
+			<ul class="mr-auto flex flex-row items-center">
+				<li class="pr-3">
+					<a class="flex rounded-full btn btn-primary px-5 py-3 transition hover:bg-[#0099D3]" href="javascript:void();" onclick="window.open(this.href, 'windowName', 'width=1000, height=700, left=24, top=24, scrollbars, resizable'); return false;">
+						<i class="fab fa-play"></i> Listen Live
+					</a>
+				</li>
+				<!-- Now playing -->
+				<li class="pr-3">
+					<a class="cc_streaminfo text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" data-type="trackbuyurl" data-username="jaygreentree">
+						<img data-type="trackimageurl" class="cc_streaminfo" data-username="jaygreentree" id="nav-np-album" alt="" width="50" height="50" style="color: #013852;max-width:100%;height:auto">
+					</a></li>
+					<li class="border-r pr-3">
+						<a class="text-dark" href="" >
+							<span id="nav-np-song" class="cc_streaminfo mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px" data-type="tracktitle" data-username="jaygreentree">
+								
+							</span><br>
+							<span id="nav-np-artist" class="cc_streaminfo inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px" data-type="trackartist" data-username="jaygreentree">
+								
+							</span>
+						</a>
+					</li>
+					<!-- End Now playing -->
+					<!-- On Air -->
+					<li class="border-r pr-3">
+						{% include '_includes/countdown' %}
+					</li>
+					{% set currentEventId = craft.app.request.segment(3) %}
+					{% for event in craft.calendar.events({id: 'not ' ~ currentEventId,rangeStart: 'today',rangeEnd: '1 month',limit: 1}) %}
+						<li class="pr-3">
+							<a class="text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" href="">
+								{% set image = event.image.one() %}
+								{% if image %}
+									<img src="{{ image.getUrl('') }}" id="nav-np-album" alt="" width="50" height="50" style="color:transparent;max-width:100%;height:auto">
+								{% endif %}
+							</a></li>
+							<li class="border-r pr-3">
+								<a class="text-dark" href="" >
+									<span id="nav-np-song" class="mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px">
+										{{ event.title }}
+									</span><br>
+									<span id="nav-np-artist" class="inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px">
+										{{ event.startDate.format("h:i A") }} - {{ event.endDate.format("h:i A") }}
+									</span>
+								</a>
+							</li>
+						{% endfor %}
+						<!-- End On Air -->
+						<!--li class="border-l pl-3">
+							<div>
+									<div class="my-0 py-0 text-sm font-medium">Listen At:
+											<button type="button"
+													class="rounded-full px-5 py-3 text-sm transition-all duration-200 bg-brand-primary !px-2 !py-1 text-xs font-medium text-white transition-all duration-200 opacity-0 undefined"
+													id="listen-at-toggle">Change
+											</button>
+									</div>
+									<div class="text-dark my-0 py-0 text-sm">Evansville, IN 94.9 FM</div>
+							</div>
+					</li-->
+				</ul>
+				<ul class="ml-3 flex flex-row items-center">
+					
+					<li class="border-r pr-3">
+						<a class="flex rounded-full btn btn-secondary px-5 py-3 transition hover:bg-[#0099D3]" href="/live">
+							Livestreams
+						</a>
+					</li>
+					<li class="relative pl-3"><input class="rounded-full border py-3 pl-12 pr-6 shadow-md"
+						data-test-id="header-search-input" type="search" placeholder="Search"
+						aria-label="Search" autocomplete="off">
+						<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass"
+							class="svg-inline--fa fa-magnifying-glass absolute left-7 top-[18px]" role="img"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+							<path fill="currentColor"
+							d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+						</svg>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</section>

@@ -1,0 +1,81 @@
+<!-- Template: {{ _self }}.twig -->
+{# @var products \craft\commerce\elements\Product[] #}
+<div class="my-6">
+  <div class="grid gap-3 gap-y-9 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for product in products %}
+      <div class="relative bg-gray-50 rounded hover:shadow-md">
+        <div>
+          <a class="block" href="{{ product.url }}">
+            {% include "shop/_private/images/placeholder.svg" with {
+              class: 'w-full h-auto rounded rounded-b-none',
+              width: 320,
+              height: 140
+            } %}
+          </a>
+        </div>
+        <div class="m-4">
+          <div class="relative text-lg text-bold mb-2">
+            <div class="w-2/3">
+              <a class="leading-tight text-blue-500 hover:text-blue-600" href="{{ product.url }}">
+                {{ product.title|title }}
+              </a>
+            </div>
+            <div>
+              <span class="absolute top-0 right-0">{{ product.defaultPriceAsCurrency }}</span>
+            </div>
+          </div>
+          <p class="text-sm">
+            {{ 'This is a pretend product description, placeholdering here for you to swap with something better.'|t }}
+          </p>
+          <form method="post" class="mt-6">
+            {{ csrfInput() }}
+            {{ actionInput('commerce/cart/update-cart') }}
+            {{ successMessageInput('{product} added to cart.'|t({
+              product: product.title
+            })) }}
+
+            <div class="text-right text-xs text-gray-400">
+              {% set totalVariants = product.getVariants()|length %}
+              {{ '{total} variant(s)'|t({ total: totalVariants }) }}
+            </div>
+
+            <div style="overflow-y: scroll; max-height: 6rem;">
+              {% for variant in product.getVariants() %}
+                {# @var variant \craft\commerce\elements\Variant #}
+                <label class="flex w-full items-center">
+                  {{ tag('input', {
+                    name: 'purchasableId',
+                    type: 'radio',
+                    value: variant.id,
+                    checked: loop.first,
+                    class: not variant.getIsAvailable() ? 'opacity-10' : '',
+                    disabled: not variant.availableForPurchase,
+                  }) }}<span class="pl-1">{{ variant.sku }} {% if variant.inventoryTracked %}({{ variant.stock ? variant.stock ~ ' available' : 'out of stock'}}){% endif %}</span><span class="ml-auto">{% if variant.onPromotion %} <del class="text-gray-400 text-xs">{{ variant.price|currency(cart.currency) }}</del>{% endif %} {{ variant.salePrice|currency(cart.currency) }}</span>
+                </label>
+              {% endfor %}
+            </div>
+            <div class="mt-1 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
+              {{ input('number', 'qty', 1, {
+                class: 'mr-0 mb-1 md:mr-1 md:mb-0 sm:mb-1 border border-gray-200 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:ring',
+                step: 1,
+                min: 1,
+                placeholder: 'Quantity'|t
+              }) }}
+              {{ tag('button', {
+                type: 'submit',
+                class: ['m-0', 'text-center', 'cursor-pointer rounded px-4 py-2 inline-block bg-blue-500 hover:bg-blue-600 text-white hover:text-white'],
+                text: 'Add to cart'|t
+              }) }}
+            </div>
+            <div class="mt-1">
+              <label>
+                {{ input('checkbox', 'options[giftWrapped]', 'yes') }}
+                {{ 'Gift wrap item'|t }}
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

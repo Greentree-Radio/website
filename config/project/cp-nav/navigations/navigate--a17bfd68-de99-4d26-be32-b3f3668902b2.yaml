@@ -1,0 +1,16 @@
+currLabel: Navigate
+customIcon: null
+enabled: true
+handle: navigate
+icon: /var/www/html/vendor/studioespresso/craft-navigate/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: Navigate
+prevLevel: 1
+prevParent: null
+prevUrl: navigate
+sortOrder: 41
+type: plugin
+url: navigate

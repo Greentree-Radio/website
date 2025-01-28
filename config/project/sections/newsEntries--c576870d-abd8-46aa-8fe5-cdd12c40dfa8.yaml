@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 109f5d44-e366-49e7-826d-6b13de779861 # News
+handle: newsEntries
+maxAuthors: 1
+name: 'News Entries'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: _site/_news/_entry
+    uriFormat: 'news/{slug}'
+type: channel

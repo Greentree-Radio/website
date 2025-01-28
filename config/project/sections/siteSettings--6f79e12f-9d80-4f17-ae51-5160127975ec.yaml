@@ -1,0 +1,15 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 75c71ec6-7c59-460d-bac3-80ae2ee887a5 # Site Settings
+handle: siteSettings
+maxAuthors: 1
+name: 'Site Settings'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: single

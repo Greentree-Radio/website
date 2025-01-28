@@ -1,0 +1,51 @@
+.cookiebanner {
+  h1 {
+  }
+
+  &__content {
+  }
+
+  &__notice {
+  }
+
+  &__actions {
+  }
+
+  &__essentials,
+  &__settings {
+  }
+
+  &__essentials {
+  }
+}
+.cookie-modal {
+
+  h1 {
+  }
+
+  h2 {
+  }
+
+  &__content {
+  }
+
+  &__close-action {
+  }
+
+  &__checks {
+    input {
+    }
+  }
+
+  &__description {
+  }
+
+  &__options {
+  }
+
+  &__actions {
+  }
+}
+
+.cookie-overlay {
+}

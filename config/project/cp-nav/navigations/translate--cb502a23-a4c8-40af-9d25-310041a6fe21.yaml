@@ -1,0 +1,16 @@
+currLabel: Translate
+customIcon: null
+enabled: true
+handle: translate
+icon: /var/www/html/vendor/statikbe/craft-translate/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: Translate
+prevLevel: 1
+prevParent: null
+prevUrl: translate
+sortOrder: 24
+type: plugin
+url: translate

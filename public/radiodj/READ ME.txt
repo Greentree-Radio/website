@@ -1,0 +1,25 @@
+Hello, Thank you for downloading the RADIODJ WAAF Website script...
+This site is dynamic so once you've added your details and your settings to the config.php file it should connect to your database and show the information.
+
+HOMEPAGE: AJAX Driven and will refresh smoothly every few minutes.
+TOPSONGS: Shows the TEN Most Requested / Most Played / Most Liked songs in your database.
+REQUESTS: Shows all songs from your database and the ability for users to place requests and like songs. With a Live Search feature for finding Artists / Songs.
+
+////////////////////////////////////////////////////////////////////
+SETUP:
+Edit the config.php file with your details for database connection.
+Change the Tunein buttons to your stream. edit out the ones you don't use.
+ALL Album art to be placed in the pictures folder and artist name to be the name of the album art. (eg: Michael Jackson would be Michael Jackson.jpg)
+
+Upload the contents of the folder to your webhost, and goto setup.php so we can add the database tables.
+///////////////////////////////////////////////////////////////////////
+
+YOUR USE OF THIS WEBSCRIPT IS FOR USE WITH RADIODJ (RADIODJ.RO)
+AND IS BROUGHT TO YOU BY STEWARTSWEBWORKS.COM FREE WITH THE LIMITATION
+THAT YOU LEAVE THE POWERED BY AND DEVELOPED BY LINKS IN PLACE - THANK YOU
+
+If you have any issues please email me: emma@stewartswebworks.com
+
+NOTE: If I continue to find more and more people removing the credit link (stewartswebworks.com)
+I will not continue to make new templates or improve excisting ones.
+Would you like me taking something of yours that you spend days/weeks/months making and passing it off as my own ?

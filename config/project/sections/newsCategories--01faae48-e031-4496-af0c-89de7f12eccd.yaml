@@ -1,0 +1,18 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 2a768305-5971-43c0-a2f4-415e648c6a45 # Category
+handle: newsCategories
+maxAuthors: 1
+name: 'News categories'
+propagationMethod: all
+siteSettings:
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # $SYSTEM_NAME
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 3
+  uid: b7f87597-c391-468e-ab5d-ce055d8b15b1
+type: structure

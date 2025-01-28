@@ -1,0 +1,16 @@
+currLabel: 'Tracking Scripts'
+customIcon: null
+enabled: true
+handle: tracking
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevLabel: 'Tracking Scripts'
+prevLevel: 2
+prevParent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevUrl: seomatic/tracking/gtag
+sortOrder: 57
+type: plugin
+url: seomatic/tracking/gtag

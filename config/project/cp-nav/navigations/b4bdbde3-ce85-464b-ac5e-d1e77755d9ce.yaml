@@ -1,0 +1,16 @@
+currLabel: 'Clear Caches'
+customIcon: null
+enabled: true
+handle: mmikkel/cpclearcache
+icon: 'fontIcon:trash'
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: 'Clear Caches'
+prevLevel: 1
+prevParent: null
+prevUrl: mmikkel/cpclearcache
+sortOrder: 51
+type: ''
+url: mmikkel/cpclearcache

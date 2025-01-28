@@ -1,0 +1,16 @@
+currLabel: Calendar
+customIcon: null
+enabled: true
+handle: calendar
+icon: /var/www/html/vendor/solspace/craft-calendar/packages/plugin/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: Calendar
+prevLevel: 1
+prevParent: null
+prevUrl: calendar
+sortOrder: 32
+type: plugin
+url: calendar

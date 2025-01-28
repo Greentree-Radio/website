@@ -1,0 +1,16 @@
+currLabel: 'Cookie Banner'
+customIcon: null
+enabled: true
+handle: 'https://radio.ddev.site/admin/cookie-banner/statistics?site=%2A'
+icon: /var/www/html/vendor/statikbe/craft-cookie-banner/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: 'Cookie Banner'
+prevLevel: 1
+prevParent: null
+prevUrl: 'https://radio.ddev.site/admin/cookie-banner/statistics?site=%2A'
+sortOrder: 50
+type: plugin
+url: 'https://radio.ddev.site/admin/cookie-banner/statistics?site=%2A'

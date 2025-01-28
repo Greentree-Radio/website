@@ -1,0 +1,16 @@
+currLabel: Dashboard
+customIcon: null
+enabled: true
+handle: dashboard
+icon: null
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 2
+newWindow: false
+parent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevLabel: Dashboard
+prevLevel: 2
+prevParent: d2fcdcff-4bb2-4832-99e9-a7aa354f13a9
+prevUrl: seomatic/dashboard
+sortOrder: 53
+type: plugin
+url: seomatic/dashboard

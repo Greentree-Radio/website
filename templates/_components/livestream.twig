@@ -1,0 +1,128 @@
+{% for entry in craft.entries.section('live') %}
+    {% set live = entry.isLive %}
+
+
+    {% css %}
+        .main-container {
+        width: 795px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tab-content {
+  height: 90%;
+  padding: 1px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+    {% endcss %}
+
+
+    <div class="flex overflow-hidden w-full flwx-no-wrap justify-center p-8 pb-4">
+        <div class="flex-grow sm:w-full md:w-3/4">
+            <div>
+            <span sprig s-trigger="every 10s" class="{{ live ? '' : 'hidden' }}">
+                <div id="boxcast-widget-gsxtwocix3fjhwnxu52o">Loading...</div>
+                <script type="text/javascript" charset="utf-8">
+                  (function(d, s, c, o) {
+                    var js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                    js.src = '//js.boxcast.com/v3.min.js';
+                    js.onload = function() {
+                      boxcast.noConflict()('#boxcast-widget-' + c).loadChannel(c, o);
+                    };
+                    js.charset = 'utf-8';
+                    fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'gsxtwocix3fjhwnxu52o', {"showTitle": 1, "showDescription": 1, "showHighlights": 0, "showRelated": false, "defaultVideo": "next", "playInline": false, "dvr": true, "market": "smb", "showCountdown": 1, "showDonations": false, "showDocuments": false, "showIndex": false, "showChat": false, "hidePreBroadcastTextOverlay": false}));
+                </script>
+            </span>
+                <span sprig s-trigger="every 10s" class="{{ live ? 'hidden' : '' }}">
+                    {% set image = entry.overviewImage.one() %}
+                    {% if image %}
+                        <img src="{{ image.getUrl('') }}" alt="">
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="flex-grow sm:w-full md:w-1/4">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class='tab-pane container fade in bg-black' id='chat-tab'>
+                    <span sprig s-trigger="every 10s" class="{{ live ? '' : 'hidden' }}">
+                        {% include '_includes/chat.twig' %}
+                    </span>
+                    <span sprig s-trigger="every 10s" class="{{ live ? 'hidden' : '' }}">
+                        <p class="text-center text-white" style="padding-top: 50%;padding-bottom: 50%;">
+                            Chat Offline
+                        </p>
+                    </span>
+                </div>
+                <div class='tab-pane container fade in' id='notes-tab'>
+                    <textarea id="editor">
+                        
+                    </textarea>
+                </div>
+                <div class='tab-pane container fade in show active' id='schedule-tab'>
+                    {% include '_includes/schedule' %}
+                </div>
+                <div class='tab-pane container fade' id='bible-tab'>
+                    Add Bible embed here
+                </div>
+
+            </div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tab">
+                <li class='nav-item'>
+                    <button class='nav-link' data-toggle='tab' href='#chat-tab'>Chat</button>
+                </li>
+                <li class='nav-item'>
+                    <button class='nav-link' data-toggle='tab' href='#notes-tab'>Notes</button>
+                </li>
+                <li class='nav-item'>
+                    <button class='nav-link active' data-toggle='tab' href='#schedule-tab'>Schedule</button>
+                </li>
+                <li class='nav-item'>
+                    <button class='nav-link ' data-toggle='tab' href='#bible-tab'>Bible</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- from cdn -->
+
+{% endfor %}
+
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckeditor/samples/js/sample.js"></script>
+<script>
+  initSample();
+</script>

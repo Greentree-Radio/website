@@ -1,0 +1,64 @@
+[data-s-chip] {
+  @apply relative;
+
+  .chip {
+    &__trigger-wrapper {
+      @apply relative;
+    }
+
+    &__trigger {
+      @apply btn btn--primary;
+
+      @mixin icon chevron-down;
+
+      &::after {
+        @apply flex-shrink-0 ml-2;
+      }
+    }
+
+    &__trigger-clear {
+      @mixin icon clear;
+      @apply absolute top-0 bottom-0 right-0 pl-2 pr-4 text-white;
+
+      span {
+        @apply sr-only;
+      }
+    }
+
+    &__bubble {
+      @apply absolute -top-2 -right-2 h-5 min-w-[1.25rem] bg-blue-500 text-white rounded-full text-sm justify-center items-center;
+    }
+
+    &__modal {
+      @apply fixed top-0 left-0 z-10 p-6 bg-white shadow;
+      max-width: max-content;
+      width: 90vw;
+    }
+
+    &__modal-close {
+      @mixin icon clear;
+      @apply absolute top-0 right-0 p-2;
+      span {
+        @apply sr-only;
+      }
+    }
+
+    &__modal-clear {
+      @mixin icon-before delete;
+      @apply flex items-center ml-auto;
+      &::before {
+        @apply mr-2;
+      }
+    }
+  }
+
+  &.active {
+    .chip__trigger {
+      @apply btn--secondary;
+
+      &::after {
+        @apply invisible;
+      }
+    }
+  }
+}

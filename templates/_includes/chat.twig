@@ -1,0 +1,125 @@
+
+<div id="chat">
+	<div class="modal" id="editNameModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Chat Options</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Change your display name here.</p>
+					<input class="form-control" id="nameInput" placeholder="New Display Name">
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+					<button id="saveOptionsButton" type="button" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="msg-group" id="messages-area"></div>
+	<div class="form-group mb-3">
+		<div class="input-group-prepend">
+			<button data-toggle="modal" data-target="#editNameModal" class="btn btn-secondary input-btn" type="button">Chat Options</button>
+		</div>
+		<textarea id="input-box" class="form-control" rows="1"></textarea>
+		<div class="input-group-append">
+			<button id="send-button" class="btn btn-primary input-btn" type="button">Send Message</button>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.min.js"></script>
+<script>
+	(function () {
+
+function makeid(length) { // Used to create new user ids
+var result = '';
+var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var charactersLength = characters.length;
+for (var i = 0; i < length; i++) {
+result += characters.charAt(Math.floor(Math.random() * charactersLength));
+}
+return result;
+}
+
+var pubnub = new PubNub({ // Set your PubNub keys here
+publishKey: 'pub-c-4472f693-1ab3-41ca-9b7c-bbfc55897105',
+subscribeKey: 'sub-c-0805172e-c32e-11ec-b74b-82b465a2b170',
+uuid: 'Anon-' + makeid(5)
+});
+
+var messagesArea = document.getElementById('messages-area'),
+input = document.getElementById('input-box'),
+sendButton = document.getElementById('send-button'),
+saveButton = document.getElementById('saveOptionsButton'),
+nameInput = document.getElementById('nameInput'),
+channel = 'chat-channel';
+
+class chatControl { // Formats messages and scrolls into view.
+publishMessage(name, msg) {
+messagesArea.innerHTML = messagesArea.innerHTML + this.msg(name, msg, 'start', 'primary');
+messagesArea.scrollIntoView(false);
+}
+receiveMessage(name, msg) {
+messagesArea.innerHTML = messagesArea.innerHTML + this.msg(name, msg, 'end', 'secondary');
+messagesArea.scrollIntoView(false);
+}
+msg(name, msg, side, style) {
+var msgTemp = `
+                            <div class="card text-white bg-${style}">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-${side} display-${name}">${name}</h6>
+                                    <p class="card-text float-${side}">${msg}</p>
+                                </div>
+                            </div>
+                            `;
+return msgTemp;
+}
+}
+var chat = new chatControl();
+
+pubnub.addListener({ // Get new messages.
+message: function (msg) { // console.log(msg);
+if (msg.publisher == pubnub.getUUID()) { // Check who sent the message.
+chat.publishMessage('You', msg.message);
+} else {
+chat.receiveMessage(msg.publisher, msg.message);
+}
+}
+});
+pubnub.subscribe({ // Subscribe to wait for messages
+channels: [channel]
+});
+
+function publishMessage() { // Send messages with PubNub.
+var msg = input.value.trim().replace(/(?:\r\n|\r|\n)/g, '<br>'); // Format message.
+input.value = '';
+if (msg != '') {
+var publishConfig = {
+channel: channel,
+message: msg
+};
+pubnub.publish(publishConfig, function (status, response) {
+// Publish message to current channel.
+// console.log(status, response);
+});
+}
+};
+sendButton.addEventListener("click", function (e) {
+publishMessage();
+presence : (presenceEvent) => { // Update the number of online members.
+document.getElementById("online-users-count").innerHTML = presenceEvent.occupancy;
+}
+
+});
+input.addEventListener('keyup', function (e) {
+if ((e.keyCode || e.charCode) === 13) {
+publishMessage();
+}
+});
+
+})();
+</script>

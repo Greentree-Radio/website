@@ -1,0 +1,105 @@
+{% extends '_site/NewLayout' %}
+{% css %}
+
+{% endcss %}
+{% block content %}
+    <div class="container" style="margin-top: 10px;">
+
+        <div class="row">
+            <div id="section-a-bg" class="col-md-12">
+                <div id="zone-sectiona" class="zone-instance">
+                    <div class="zone-content">
+                        <div id="bid_11230" data-zone-location="Page"
+                             class="block-instance js-block-instance series-with-countdown">
+                            <div class="block-content">
+                                <div id="ctl00_main_ctl11_ctl01_ctl00_upnlContent">
+                                    <div id="ctl00_main_ctl11_ctl01_ctl00_pnlView">
+
+                                        <div class="series-with-countdown">
+                                            <div class="left-and-right-container">
+                                                <div class="left">
+                                                    <h5 style="padding:0;margin:0;">Current Series</h5>
+                                                    {% set image = entry.overviewImage.one() %}
+                                                    {% if image %}
+                                                        <img src="{{ image.getUrl() }}"
+                                                             class="rounded-edge-img img-responsive current-series"
+                                                             alt="Current Series">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="right">
+                                                    <!--div>
+                                                        <h2 style="padding-top:0;">{{ entry.title }}</h2>
+                                                        <p>{{ entry.description }}</p>
+                                                    </div-->
+<!-- -->
+                                                    <div class="btn-row countdown-row">
+                                                        <div class="show-timer">
+                                                            <div class="hide-mobile">NEXT ONLINE SERVICE </div>
+                                                            <div class="countdown-timer">
+                                                                <div class="spacer"></div>
+                                                                <div class="time">
+                                                                    <p class="time-digit days">00</p>
+                                                                    <p class="time-label">days</p>
+                                                                </div>
+                                                                <div class="spacer"></div>
+                                                                <div class="time">
+                                                                    <p class="time-digit hours">00</p>
+                                                                    <p class="time-label">hours</p>
+                                                                </div>
+                                                                <div class="spacer"></div>
+                                                                <div class="time">
+                                                                    <p class="time-digit minutes">00</p>
+                                                                    <p class="time-label">minutes</p>
+                                                                </div>
+                                                                <div class="spacer"></div>
+                                                                <div class="time">
+                                                                    <p class="time-digit seconds">00</p>
+                                                                    <p class="time-label">seconds</p>
+                                                                </div>
+                                                                <div class="spacer"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="show-live" style="display: none;">
+                                                            <div class="countdown-complete">
+                                                                <a href="/live/" class="btn btn-primary">We are live.
+                                                                    Join us online</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+<!-- -->
+                                                    <div class="stream-platforms">
+                                                        <h5>Also available on</h5>
+                                                        <div class="social-list">
+                                                            <a class="logo" href="">
+                                                                <img class="youtube" src="/Assets/Icons/youtube.svg" alt="YouTube">
+                                                            </a>
+                                                            <<a class="logo" href="">
+                                                                <img class="facebook" src="/Assets/Icons/facebook.svg" alt="Facebook"/>
+                                                            </a>
+                                                            <!--a class="logo" href="">
+                                                                <img class="appletv" src="/Assets/Icons/appletv.png" alt="AppleTV">
+                                                            </a>
+                                                            <a class="logo" href="">
+                                                                <img class="roku" src="/Assets/Icons/roku.png" alt="Roku">
+                                                            </a-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% set baseUrl = craft.app.config.general.aliases.baseUrl %}
+{% set currentLocale = craft.app.language|split('-') %}
+<!DOCTYPE html>
+<html class="" lang="{{ currentLocale[0] }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/frontend/inert.css" id="inert-style">
+    <link rel="stylesheet" type="text/css" href="/css/djs.css" id="onair-style">
+    <link rel="stylesheet" type="text/css" href="/css/klove.css" id="onair-style">
+    {# Change these when you have a multisite with different layout #}
+    {{ craft.vite.script("tailoff/js/site.ts", false) }}
+    {{ craft.vite.inline("@webroot/favicon/site/webapp.html") }}
+    {% hook 'seo-fields' %}
+    {% if 'statik.be' in baseUrl %}
+    <meta name="robots" content="noindex">
+    {% endif %}
+    {% block head_scripts %}
+    <link rel="preconnect" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="//fonts.gstatic.com"> 
+    {% if not craft.app.request.isPreview() %}
+    {# put GTM here #}
+    {% endif %}
+    {% endblock %}
+    {% if entry is defined and not shouldPageBeIndexed(baseUrl, entry) %}
+    <meta name="robots" content="noindex">
+    <meta name="robots" content="nofollow">
+    {% endif %}
+    <script src="https://kit.fontawesome.com/3f1cd61ae4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body class="page-{{ craft.app.request.getSegment(1) ?: 'home' }} {% block bodyClasses %}{% endblock %}">
+    {% apply enkode_emails %}
+    {% if not craft.app.request.isPreview() %}
+    {# put GTM here #}
+    {% endif %}
+    {% if systemOffline is not defined %}
+    {% set systemOffline = false %}
+    {% endif %}
+    {#
+    {% if currentUser and entry is defined and entry.canSave(currentUser) and not systemOffline and not craft.app.request.isPreview() %}
+    <a href="{{ entry.getCpEditUrl() }}" target="_blank" class="hidden md:inline-block transform translate-x-[115px] fixed px-4 py-2 text-white bg-primary right-0 rounded-l-full shadow-lg top-10 z-99 transition ease duration-400 hover:translate-x-0">
+        <span>{{ icon('pencil', { class: '-mt-1' }) }} </span>
+        <span class="ml-2">Edit this page</span>
+    </a>
+    {% endif %}
+    #}
+    {% endapply %}
+    {% set generalInfo = craft.entries.section('contact').status(null).one() %}
+    {% set fallback = craft.entries.section('siteSettings').status(null).one() %}
+    <div class="flex flex-col min-h-screen page-wrap " id="mainContentBlock">
+        <div class="sr-only skip-to-main ie-sr-only">
+            <a href="#main">{{ 'Skip to content'|t }}</a>
+        </div>
+        {% include '_site/_snippet/_global/_header' %}
+        {% include '_site/_snippet/_global/_flyout' %}
+        <hr>
+        <main class="flex-1 page-main" id="main">
+            <hr>
+            {% block content %}{% endblock %}
+        </main>
+        {% include '_site/_snippet/_global/_footer' %}
+    </div>
+    {# Cookiebanner #}
+    {% if not isBot %}
+    {{ craft.cookieBanner.render({
+    supportIE: true,
+    showCookieBanner: (entry.type is defined and entry.type.handle != 'cookiePolicy'),
+    }) }}
+    {% endif %}
+    {% block inline_scripts %}
+    <script>
+    window.app = window.app || {};
+    app.variables = {
+        assetsPath: "/"
+    };
+    </script>
+    <script>
+    function popitup(url) {
+        newwindow = window.open(url, 'name', 'height=300,width=650,screenX=400,screenY=350');
+        if (window.focus) { newwindow.focus() }
+        return false;
+    }
+    </script>
+    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/streaminfo.js"></script>
+    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/recenttracks.js"></script>
+    {#
+    <!-- Start of  Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=ff7dfd3e-144d-4d4a-901f-747b22509e13"> </script>
+    <!-- End of  Zendesk Widget script -->
+    #}
+    {% endblock %}
+</body>
+
+</html>

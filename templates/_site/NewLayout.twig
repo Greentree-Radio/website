@@ -1,0 +1,370 @@
+{% if showInline is not defined %}
+    {% set showInline = false %}
+{% endif %}
+{% if filledInValue is not defined %}
+    {% set filledInValue = false %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {#
+        {% set title = craft.entries.title %}
+        {% if title == ""  %}
+        <title> {{ siteName }} | {{ title }}</title>
+    #}
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!--link rel="stylesheet" href="/css/bootstrap-social.css"-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/jon.css">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/djs.css">
+    <link rel="stylesheet" href="/css/klove.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/home.css">
+    {{ craft.vite.script("tailoff/js/site.ts", true) }}
+    {{ craft.vite.inline("@webroot/favicon/site/webapp.html") }}
+    <style>
+        /* 
+            temporary hack to fix card image sizes 
+            should be moved to a file eventually
+
+        */
+        .card-img-top {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+        }
+    </style>
+    {#
+        <script src="https://kit.fontawesome.com/3f1cd61ae4.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://i.icomoon.io/public/9899b96a38/UntitledProject/style.css">
+    #}
+
+</head>
+
+<body>
+    
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white hard-shadow sticky-top">
+            <a class="navbar-brand" href="#">
+                <h3>{{ siteName }}</h3>
+                {#<img src="img/logo-klove-cyan.png" height="25" alt="">#}
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                <small>
+                    {% set serviceNav = craft.navigate.raw('serviceNav') %}
+                    {% if serviceNav|length %}
+                    <ul class="navbar-nav">
+                    <!--
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-cyan text-white ripple text-center color-change-2x font-weight-bold p-2 d-block text-uppercase" href="#">
+                                <i class="fa fa-signal-stream"></i>
+                                 Listen Live</a>
+                        </li>
+                    -->
+                    {% for node in serviceNav %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="{{ node.url }}" {% if node.blank %} target="_blank" rel="noopener" {% endif %}>
+                                <span class="icon-kl-home mr-2 fa-2x d-md-none v-align"></span>{{ node.name }}
+                            </a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                        {% if not currentUser %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/login">SIGN IN / REGISTER</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/logout">Logout</a>
+                        </li>
+                        {% endif %}
+                        <!-- li class="nav-item dropdown m-2">
+                            <a class="nav-link bg-white text-uppercase dropdown-toggle"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><i class="icon-kl-microphone mr-2 fa-2x d-md-none v-align"></i>DJS<i class="fas fa-caret-down float-right d-md-none"></i></a>
+                            <div class="dropdown-menu border-0 shadow-light" aria-labelledby="navbarDropdownMenuLink">
+                                {% for entry in craft.entries.section('djEntries') %}
+                                <a class="dropdown-item small text-uppercase py-3" href="{{ entry.url }}">{{ entry.title }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="/music/">
+                                <span class="icon-kl-music-note mr-2 fa-2x d-md-none v-align"></span>
+                            ABOUT THE MUSIC</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="#"><span class="icon-kl-bible mr-2 fa-2x d-md-none v-align"></span>MINISTRY</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+
+                        <li class="nav-item dropdown m-2">
+                            <a class="nav-link bg-white text-uppercase" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-kl-microphone mr-2 fa-2x d-md-none v-align"></i>DJS<i class="fas fa-caret-down float-right d-md-none"></i></a>
+                            <div class="dropdown-menu border-0 shadow-light" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item small text-uppercase py-3" href="#">The Morning Show</a>
+                                <a class="dropdown-item small text-uppercase py-3" href="#">Scott &amp; Kelli</a>
+                                <a class="dropdown-item small text-uppercase py-3" href="#">Jeff &amp; Randi</a>
+                            </div>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-star mr-2 fa-2x d-md-none v-align"></span>CONTESTS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-calendar mr-2 fa-2x d-md-none v-align"></span>EVENTS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-news mr-2 fa-2x d-md-none v-align"></span>NEWS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-heart mr-2 fa-2x d-md-none v-align"></span>ABOUT US</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        {% if not currentUser %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/login">SIGN IN / REGISTER</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/logout">Logout</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-cyan font-weight-bold text-white ripple-2 text-center" href="#">DONATE</a>
+                        </li-->
+                    </ul>
+                    
+                </small>
+
+            </div>
+        </nav>
+    <section class="relative z-20 shadow-lg xl:block">
+    <nav class="bg-brand-lightgray">
+        <div class="mx-auto flex h-[74px] max-w-6xl px-8">
+            <ul class="mr-auto flex flex-row items-center">
+                <li class="pr-3">
+                <a class="btn bg-gradient-sunset flex items-center justify-center rounded-full py-2 text-center text-sm font-bold text-white"  data-tealium_event="player" data-event_action="link" data-event_label="Listen" data-event_location="header" href="/player" onclick="window.open(this.href, 'windowName', 'width=1000, height=700, left=24, top=24, scrollbars, resizable'); return false;">
+                    <i class="fas fa-play mr-2 v-align"></i> LISTEN LIVE</a>
+                </li>
+                <!-- Now playing -->
+                <li class="pr-3">
+                    <a class="cc_streaminfo text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" data-type="trackbuyurl" data-username="jaygreentree">
+                        <img src="/files/no_cover_image.jpg?v=1735262489" data-type="trackimageurl" class="cc_streaminfo" data-username="jaygreentree" id="nav-np-album" alt="" width="50" height="50" style="color:transparent;max-width:100%;height:auto">
+                    </a></li>
+                <li class="border-r pr-3">
+                    <a class="text-dark" href="" >
+                        <span id="nav-np-song" class="cc_streaminfo mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px" data-type="tracktitle" data-username="jaygreentree">
+                            Track Title unavailable
+                        </span><br>
+                        <span id="nav-np-artist" class="cc_streaminfo inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px" data-type="trackartist" data-username="jaygreentree">
+                            Album title unavailable
+                        </span>
+                    </a>
+                </li>
+                <!-- End Now playing -->
+                <!-- On Air -->
+
+                {% set currentEventId = craft.app.request.segment(3) %}
+                    {% for event in craft.calendar.events({id: 'not ' ~ currentEventId,rangeStart: 'today',rangeEnd: '1 month',limit: 1}) %}
+                <li class="pr-3">
+                    <a class="text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" href="">
+                        {% set image = event.image.one() %}
+                                {% if image %}
+                        <img src="{{ image.getUrl('') }}" id="nav-np-album" alt="" width="50" height="50" style="color:transparent;max-width:100%;height:auto">
+                        {% endif %}
+                    </a></li>
+                <li class="border-r pr-3">
+                    <a class="text-dark" href="" >
+
+                        <span id="nav-np-song" class="mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px">
+                            {{ event.title }}
+                        </span><br>
+                        <span id="nav-np-artist" class="inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px">
+                            {{ event.startDate.format("h:i A") }} - {{ event.endDate.format("h:i A") }}
+                        </span>
+                    </a>
+                </li>
+                {% endfor %}
+
+                <!-- End On Air -->
+                <!--li class="border-l pl-3">
+                    <div>
+                        <div class="my-0 py-0 text-sm font-medium">
+                            <a href="/live" class="btn btn-primary rounded-full bg-brand-primary text-white" id="listen-at-toggle">Livestream</a>
+                        </div>
+                    </div>
+                </li-->
+            </ul>
+            <ul class="ml-3 flex flex-row items-center">
+                
+                <li class="relative pl-3">
+                    {% set searchResultsEntry = craft.entries.section('searchResults').one() %}
+                    {% if searchResultsEntry %}
+                    <form action="{{ searchResultsEntry.getUrl() }}" class="{% if not showInline %}js-search-form{% endif %}">
+                    <input name="q" class="rounded-full border py-3 pl-12 pr-6 shadow-md" data-test-id="header-search-input" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass"
+                         class="svg-inline--fa fa-magnifying-glass absolute left-7 top-[18px]" role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                              d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                    </svg>
+                </form>
+                {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+    {% block content %}
+    {% endblock %}
+
+        <!-- FOOTER -->
+    <div class="full-width bg-kllight">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 col-md-3">
+                    <p class="my-4">
+                        {{ siteName }}
+                        <!--<img class="" src="img/logo-klove-cyan.png" height="25" alt="">-->
+                    </p>
+                </div>
+                <div class="col-12 col-md-9">
+                    <ul class="list-inline my-4 float-right">
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-facebook-f mr-2 color-facebook"></i>Facebook</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-twitter mr-2 text-cyan"></i>Twitter</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-instagram mr-2 text-magenta"></i>Instagram</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-youtube mr-2 color-youtube"></i>YouTube</a></p>
+                        </li>
+                        <li class="list-inline-item">
+                            <p class="text-dark mb-0 ml-4"><a href=""><i class="fab fa-pinterest mr-2 color-pinterest"></i>Pinterest</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr class="m-0">
+                </div>
+            </div>
+            <div class="row justify-content-center py-4 hidden">
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2 ">POPULAR LINKS</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Stream us Online</a></li>
+                            <li><a href="#" class="text-dark">DJs and Shows</a></li>
+                            <li><a href="#" class="text-dark">Verse of the Day</a></li>
+                            <li><a href="#" class="text-dark">Prayer</a></li>
+                            <li><a href="#" class="text-dark">Events</a></li>
+                            <li><a href="#" class="text-dark">Contests</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">HELP</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">FAQs</a></li>
+                            <li><a href="#" class="text-dark">My Account</a></li>
+                            <li><a href="#" class="text-dark">Contact Us</a></li>
+                            <li><a href="#" class="text-dark">Privacy Policy</a></li>
+                            <li><a href="#" class="text-dark">Terms of Use</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">MINISTRY</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Submit a Prayer</a></li>
+                            <li><a href="#" class="text-dark">Verse of the Day</a></li>
+                            <li><a href="#" class="text-dark">Seek Advice</a></li>
+                            <li><a href="#" class="text-dark">Pastors</a></li>
+                        </small>
+                    </ul>
+                </div>
+                <div class="col-5 col-md-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="font-weight-bold text-muted pt-3 mb-2">ABOUT US</p>
+                        </li>
+                        <small>
+                            <li><a href="#" class="text-dark">Mission</a></li>
+                            <li><a href="#" class="text-dark">Jobs</a></li>
+                            <li><a href="#" class="text-dark">Finances</a></li>
+                            <li><a href="#" class="text-dark">Leadership and Key Staff</a></li>
+                            <li><a href="#" class="text-dark">Audited Financials</a></li>
+                            <li><a href="#" class="text-dark">Form 990</a></li>
+                        </small>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr class="m-0">
+                </div>
+                <div class="col my-4">
+                    <small>
+                        <p class="text-center text-muted mb-0">© {{ now | date('Y') }} {{ siteName }}, All rights reserved.</p>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+    
+    <script>
+    $(".btn-primary").click(function(e) {
+        e.preventDefault();
+        $(".hero")
+            .fadeOut(500, function() {
+                $(this).css('background', "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.5)), url('img/for-king-and-country.jpg') top center");
+
+                $(".hero .harvest-logo").css("opacity", 0);
+                $(".hero h3").text('for King & Country');
+                $(".hero h4").text('Meet and Greet + Q & A For First 500');
+                $(".btn-primary").text('Get Tickets Now');
+            })
+            .fadeIn(500);
+    });
+    </script>
+    <!--script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/streaminfo.js"></script>
+    <script language="javascript" type="text/javascript" src="https://usa14.fastcast4u.com/system/recenttracks.js"></script-->
+</body>
+
+</html>

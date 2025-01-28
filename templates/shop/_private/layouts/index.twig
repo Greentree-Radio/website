@@ -1,0 +1,406 @@
+{#
+Common, top-level layout template.
+
+@var cart        \craft\commerce\elements\Cart
+@var extraHead   string
+@var flashNotice string
+@var flashError  string
+#}
+{% if showInline is not defined %}
+    {% set showInline = false %}
+{% endif %}
+{% if filledInValue is not defined %}
+    {% set filledInValue = false %}
+{% endif %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ siteName ~ 'Online Store' }}</title>
+
+  <!--link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"-->
+
+  {% if extraHead is defined %}
+    {{ extraHead }}
+  {% endif %}
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/3f1cd61ae4.js" crossorigin="anonymous"></script>
+    <!--link rel="stylesheet" href="https://i.icomoon.io/public/9899b96a38/UntitledProject/style.css"-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/jon.css">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/djs.css">
+    <link rel="stylesheet" href="/css/klove.css">
+    <style type="text/css">
+        .card-img-top {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+        }
+    
+    /* Countdown timer */
+    .show-timer,
+    .show-live {
+        width: 100%;
+    }
+
+    .countdown-row {
+        min-height: 75px;
+        margin: 20px 0 40px 0;
+    }
+
+    .countdown-timer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .countdown-complete {
+        dispay: none;
+        display: flex;
+        width: 100%;
+    }
+
+    .time {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p.time-digit {
+        font-size: 34px;
+        margin: 15px 5px 0 0;
+        line-height: .9
+    }
+
+    p.time-label {
+        font-size: 12px;
+    }
+
+    .spacer {
+        border-left: 1px solid gray;
+        height: 44px;
+    }
+    </style>
+</head>
+<body class="relative text-gray-800 flex flex-col min-h-screen leading-relaxed">
+<!-- include main site heading start-->
+        
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white hard-shadow sticky-top">
+            <a class="navbar-brand" href="#">
+                <h1 class="container">
+                    {{ siteName ~ 'Online Store' }}
+                </h1>
+                {#<img src="img/logo-klove-cyan.png" height="25" alt="">#}
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                <small>
+                    {#{% set serviceNav = craft.navigate.raw('serviceNav') %}
+                    {% if serviceNav|length %}#}
+                    <ul class="navbar-nav">
+                        <!--
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-cyan text-white ripple text-center color-change-2x font-weight-bold p-2 d-block text-uppercase" href="#"><i class="fas fa-play mr-2 v-align"></i>Listen Live</a>
+                        </li>
+                    -->
+                    {#{% for node in serviceNav %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="{{ node.url }}" {% if node.blank %} target="_blank" rel="noopener" {% endif %}>
+                                <span class="icon-kl-home mr-2 fa-2x d-md-none v-align"></span>{{ node.name }}
+                            </a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        {% endfor %}#}
+
+                        <li class="nav-item dropdown m-2">
+                            <a class="nav-link bg-white text-uppercase" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-kl-microphone mr-2 fa-2x d-md-none v-align"></i>DJS<i class="fas fa-caret-down float-right d-md-none"></i></a>
+                            <div class="dropdown-menu border-0 shadow-light" aria-labelledby="navbarDropdownMenuLink">
+                                {% for entry in craft.entries.section('djEntries') %}
+                                <a class="dropdown-item small text-uppercase py-3" href="{{ entry.url }}">{{ entry.title }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="#"><span class="icon-kl-music-note mr-2 fa-2x d-md-none v-align"></span>MUSIC</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2 text-uppercase" href="#"><span class="icon-kl-bible mr-2 fa-2x d-md-none v-align"></span>MINISTRY</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+
+                        <li class="nav-item dropdown m-2">
+                            <a class="nav-link bg-white text-uppercase" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-kl-microphone mr-2 fa-2x d-md-none v-align"></i>DJS<i class="fas fa-caret-down float-right d-md-none"></i></a>
+                            <div class="dropdown-menu border-0 shadow-light" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item small text-uppercase py-3" href="#">The Morning Show</a>
+                                <a class="dropdown-item small text-uppercase py-3" href="#">Scott &amp; Kelli</a>
+                                <a class="dropdown-item small text-uppercase py-3" href="#">Jeff &amp; Randi</a>
+                            </div>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-star mr-2 fa-2x d-md-none v-align"></span>CONTESTS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-calendar mr-2 fa-2x d-md-none v-align"></span>EVENTS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-news mr-2 fa-2x d-md-none v-align"></span>NEWS</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link ripple-2" href="#"><span class="icon-kl-heart mr-2 fa-2x d-md-none v-align"></span>ABOUT US</a>
+                            <div class="border-bottom d-md-none"></div>
+                        </li>
+                        {% if not currentUser %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/login">SIGN IN / REGISTER</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-white border ripple-2 text-center" href="/logout">Logout</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item m-2">
+                            <a class="nav-link rounded bg-cyan font-weight-bold text-white ripple-2 text-center" href="#">DONATE</a>
+                        </li>
+                    </ul>
+                    {#{% endif %}#}
+                </small>
+
+            </div>
+        </nav>
+    <section class="relative z-20 shadow-lg xl:block">
+    <nav class="bg-brand-lightgray">
+        <div class="mx-auto flex h-[74px] max-w-6xl px-8">
+            <ul class="mr-auto flex flex-row items-center">
+                <li class="pr-3">
+                <a class="btn bg-gradient-sunset flex items-center justify-center rounded-full py-2 text-center text-sm font-bold text-white"  data-tealium_event="player" data-event_action="link" data-event_label="Listen" data-event_location="header" href="/player" onclick="window.open(this.href, 'windowName', 'width=1000, height=700, left=24, top=24, scrollbars, resizable'); return false;">
+                    <i class="fas fa-play mr-2 v-align"></i> LISTEN LIVE</a>
+                </li>
+                <!-- Now playing -->
+                <li class="pr-3">
+                    <a class="cc_streaminfo text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" data-type="trackbuyurl" data-username="jaygreentree">
+                        <img data-type="trackimageurl" class="cc_streaminfo" data-username="jaygreentree" id="nav-np-album" alt="" width="50" height="50" style="color:transparent;max-width:100%;height:auto">
+                    </a></li>
+                <li class="border-r pr-3">
+                    <a class="text-dark" href="" >
+                        <span id="nav-np-song" class="cc_streaminfo mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px" data-type="tracktitle" data-username="jaygreentree"></span><br>
+                        <span id="nav-np-artist" class="cc_streaminfo inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px" data-type="trackartist" data-username="jaygreentree"></span>
+                    </a>
+                </li>
+                <!-- End Now playing -->
+                <!-- On Air -->
+                {% set currentEventId = craft.app.request.segment(3) %}
+                    {% for event in craft.calendar.events({id: 'not ' ~ currentEventId,rangeStart: 'today',rangeEnd: '1 month',limit: 1}) %}
+                <li class="pr-3">
+                    <a class="text-dark nav-np-song-url ml-6 mr-1 flex justify-center" title="Current Song" href="">
+                        {% set image = event.image.one() %}
+                                {% if image %}
+                        <img src="{{ image.getUrl('') }}" id="nav-np-album" alt="" width="50" height="50" style="color:transparent;max-width:100%;height:auto">
+                        {% endif %}
+                    </a></li>
+                <li class="border-r pr-3">
+                    <a class="text-dark" href="" >
+
+                        <span id="nav-np-song" class="mb-[-5px] inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold"style="max-width:230px">
+                            {{ event.title }}
+                        </span><br>
+                        <span id="nav-np-artist" class="inline-block overflow-hidden text-ellipsis whitespace-nowrap text-sm" style="max-width:230px">
+                            {{ event.startDate.format("h:i A") }} - {{ event.endDate.format("h:i A") }}
+                        </span>
+                    </a>
+                </li>
+                {% endfor %}
+                <!-- End On Air -->
+                <!--li class="border-l pl-3">
+                    <div>
+                        <div class="my-0 py-0 text-sm font-medium">Listen At:
+                            <button type="button"
+                                    class="rounded-full px-5 py-3 text-sm transition-all duration-200 bg-brand-primary !px-2 !py-1 text-xs font-medium text-white transition-all duration-200 opacity-0 undefined"
+                                    id="listen-at-toggle">Change
+                            </button>
+                        </div>
+                        <div class="text-dark my-0 py-0 text-sm">Evansville, IN 94.9 FM</div>
+                    </div>
+                </li-->
+            </ul>
+            <ul class="ml-3 flex flex-row items-center">
+                
+                <li class="relative pl-3">
+                    {% set searchResultsEntry = craft.entries.section('searchResults').one() %}
+                    {% if searchResultsEntry %}
+                    <form action="{{ searchResultsEntry.getUrl() }}" class="{% if not showInline %}js-search-form{% endif %}">
+                    <input name="q" class="rounded-full border py-3 pl-12 pr-6 shadow-md" data-test-id="header-search-input" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass"
+                         class="svg-inline--fa fa-magnifying-glass absolute left-7 top-[18px]" role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                              d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                    </svg>
+                </form>
+                {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+<!-- include main site heading end -->
+<div id="body">
+{% if cart is not defined %}
+  {% set cart = craft.commerce.carts.cart %}
+{% endif %}
+
+{% set flashNotice = craft.app.session.getFlash('notice') %}
+{% set flashError = craft.app.session.getFlash('error') %}
+
+{% macro docs(text, link) %}
+    <small class="">
+        {{ tag('a', {
+            text: 'ℹ︎ ' ~ text,
+            href: link,
+            class: 'text-gray-400 hover:text-gray-600 hover:underline',
+            target: '_blank',
+        }) }}
+    </small>
+{% endmacro %}
+
+<header>
+  {#{{ include('shop/_private/layouts/includes/header') }}#}
+  {{ include('shop/_private/layouts/includes/nav-main') }}
+  {{ include('shop/_private/layouts/includes/nav-checkout') }}
+  {{ include('shop/_private/layouts/includes/nav-customer') }}
+</header>
+
+<div id="main">
+  {% if flashNotice %}
+    <div class="bg-blue-500 text-white">
+      <div class="container mx-auto px-6 py-4">
+        {{ flashNotice ?? 'Test flash notice' }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if flashError %}
+    <div class="bg-red-500 text-white">
+      <div class="container mx-auto px-6 py-4">
+        {{ flashError ?? 'Test flash error' }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if cart and cart.hasNotices() %}
+    <div class="bg-blue-400 text-white">
+      <div class="container mx-auto px-6 py-4 relative">
+        <span>{{ 'Cart Notices'|t }}</span>
+        {% set entriesByType = cart.getNotices()|group('type') %}
+        {% for type, notices in entriesByType %}
+          {% for notice in notices %}
+            <li class="list-disc"
+                data-type="{{ notice.type }}"
+                data-attribute="{{ notice.attribute }}"
+                data-message="{{ notice.message }}"
+            >
+              {{- notice -}}
+            </li>
+          {% endfor %}
+        {% endfor %}
+        <form method="post">
+          {{ actionInput('commerce/cart/update-cart') }}
+          {{ successMessageInput('Notices dismissed') }}
+          {{ hiddenInput('clearNotices') }}
+          {{ csrfInput() }}
+          {{ tag('button', {
+            type: 'submit',
+            class: ['absolute', 'mt-4', 'mr-4', 'top-0', 'right-0', 'cursor-pointer rounded px-2 py-1 text-sm inline-block', '[[classes.btn.blue]]'],
+            text: 'Dismiss'|t
+          }) }}
+        </form>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if cart and cart.errors|length %}
+    <div class="bg-red-500 text-white">
+      <div class="container mx-auto px-6 py-4">
+        {% for attribute, errors in cart.errors %}
+          {% if loop.first %}<ul>{% endif %}
+          {% for key, error in errors %}
+            <li>{{ attribute }}: {{ error }}</li>
+          {% endfor %}
+          {% if loop.last %}</ul>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% block body %}
+    <div class="container mx-auto p-6 flex-grow">
+      {% block main %}{% endblock %}
+    </div>
+  {% endblock %}
+</div>
+
+<footer>
+  {{ include('shop/_private/layouts/includes/footer') }}
+</footer>
+</div>
+</body>
+</html>
+{% js at head %}
+let states = {{ craft.commerce.getStores().getCurrentStore().settings.getAdministrativeAreasListByCountryCode()|json_encode|raw }};
+{% set usedFields = {} %}
+{% for countryCode in craft.app.addresses.getCountryRepository().getAll()|keys %}
+	{% set usedFields = usedFields|merge({ (countryCode): craft.app.addresses.getUsedFields(countryCode)|merge([
+      'fullName',
+      'latLong',
+      'organizationTaxId',
+      'organization',
+      'countryCode',
+    ]) }) %}
+{% endfor %}
+let usedAddressFieldsByCountryCode = {{ usedFields|json_encode|raw }};
+function hideAddressFields(selectorTemplate) {
+  const fields = document.querySelectorAll('.' + selectorTemplate.replace('placeHolder', 'js-address-field'));
+  if (!fields.length) {
+    return;
+  }
+
+  for (let i = 0; i < fields.length; i++) {
+    fields[i].classList.add('hidden');
+  }
+}
+
+function showAddressField(fieldName, selectorTemplate) {
+  const closestSelector = selectorTemplate;
+  const field = document.querySelector('#' + selectorTemplate.replace('placeHolder', fieldName));
+  if (!field) {
+    return;
+  }
+
+  const fieldWrapper = field.closest('.' + closestSelector.replace('placeHolder', 'js-address-field'));
+  if (!fieldWrapper) {
+    return;
+  }
+
+  fieldWrapper.classList.remove('hidden');
+}
+{% endjs %}
+
+{% js at endBody %}
+let $siteSelector = document.querySelector('#js-site-selector');
+if ($siteSelector) {
+  $siteSelector.addEventListener('change', (ev) => window.location = ev.target.value);
+}
+{% endjs %}

@@ -1,0 +1,133 @@
+color: red
+fieldLayouts:
+  3b1bae66-e0c0-4f37-8d73-fdb28e0fa5d5:
+    cardView:
+      - id
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-12-08T00:12:38+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e6ea6ba7-679f-44c9-b732-a0fe479917a1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-31T04:55:34+00:00'
+            elementCondition: null
+            fieldUid: 15ed2b72-8955-4cec-93f8-9736a9e50e80 # Overview image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 63ea7fc8-db5d-4a10-84b0-2014657ef99d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-31T04:55:34+00:00'
+            elementCondition: null
+            fieldUid: 4a2bad07-8d89-4689-b0bf-774eed764660 # Overview title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 647566c1-a56c-4bc8-b3f5-279a1f316302
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-31T04:55:34+00:00'
+            elementCondition: null
+            fieldUid: 2f8a6ddc-4ab7-4f9f-a2ea-72c6cb387f38 # Overview description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7fa407d7-e6e4-4e05-8005-e4d8ba2b37cd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-08T00:16:52+00:00'
+            elementCondition: null
+            fieldUid: 837a8cff-ff1c-4c10-9ce2-5d3bc31b0c4b # Is Live
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4b6287c0-df92-482e-9762-3deeb5de7ddc
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-27T02:53:45+00:00'
+            elementCondition: null
+            fieldUid: d66ffcef-8ccc-4e89-9e36-bce49e0dd17a # Video
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2ab0c95f-5715-46fe-a216-deffe6097a9d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: edaa4429-004d-4eac-9b17-99611be4bdbe
+        userCondition: null
+handle: live
+hasTitleField: true
+icon: signal-stream
+name: Live
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

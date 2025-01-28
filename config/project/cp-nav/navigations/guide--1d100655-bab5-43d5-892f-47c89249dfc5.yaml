@@ -1,0 +1,16 @@
+currLabel: Guide
+customIcon: null
+enabled: true
+handle: guide
+icon: /var/www/html/vendor/wbrowar/guide/src/icon-mask.svg
+layout: dd939721-6ae7-4b69-a3a3-7d9dbe9890c8 # Default
+level: 1
+newWindow: false
+parent: null
+prevLabel: Guide
+prevLevel: 1
+prevParent: null
+prevUrl: guide
+sortOrder: 11
+type: plugin
+url: guide
